@@ -3,13 +3,21 @@ clc;
 clear;
 close all;
 tic
-load simulation_case1.mat;
+%% add path to MATLAB
+addpath('..\')
 %% model setting
 omega=pi/6; % angular frequency
 order=2;
+time=[1:72]'; % time
+time_length=length(time);
+dev=[0.1;0.2;0.3;0.4]; % error deviation
+dev_length=length(dev);
+rep=1000; % repetitions
+%% load data
+load simulation_case.mat;
 train=60; % train data
 test=12; % test为test步长
-x_sim_train=xrep(1:train,:);
+x_sim_train=repmat(x(1:train),1,rep);
 %% figure setting
 fig=figure('unit','centimeters','position',[10,10,30,10],'PaperPosition',[0, 0, 30,10],'PaperSize',[30,10]);
 pos=[0.07,0.13,0.2,0.80; 0.31,0.13,0.2,0.80;0.55,0.13,0.2,0.80;0.79,0.13,0.2,0.80  ];
@@ -48,5 +56,4 @@ annotation(fig,'arrow',[0.23 0.21]+0.48,[0.20 0.20]);
 annotation(fig,'arrow',[0.23 0.21]+0.72,[0.20 0.20]);
 %%
 savefig(fig,'figure\sim2.fig');
-exportgraphics(gcf,'F:\博士\Grey Fourier model\Grey Fourier model\figure\sim2.pdf')
 time=toc

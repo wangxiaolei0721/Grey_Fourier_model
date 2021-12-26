@@ -22,4 +22,4 @@ for i=1:dev_length  % error deviation
     x_sim{i}=xrep+noise;
 end
 %% save simulation data
-save('simulation_case.mat','x_sim','xrep')
+save('simulation_case.mat','x_sim','x')

@@ -3,6 +3,8 @@ clc;
 clear;
 close all;
 tic
+%% add path to MATLAB
+addpath('..\')
 %% parameter setting
 omega=pi/6; % angular frequency
 order_upper=6; % maximal order
@@ -15,7 +17,7 @@ train=48; % train data
 val=12; % validation data
 test=12; % test data
 train_val=train+val; % train data + validation data
-x_train_val=xrep(1:train_val,:);
+x_train_val=repmat(x(1:train_val),1,rep);
 %% figure setting
 fig=figure('unit','centimeters','position',[10,10,30,10],'PaperPosition',[0, 0, 30,10],'PaperSize',[30,10]);
 pos=[0.07,0.13,0.2,0.80; 0.31,0.13,0.2,0.80;0.55,0.13,0.2,0.80;0.79,0.13,0.2,0.80  ];
@@ -59,5 +61,4 @@ for i=1:dev_length % error deviation
 end
 %% save figure
 savefig(fig,'figure\sim1.fig');
-exportgraphics(gcf,'F:\博士\Grey Fourier model\Grey Fourier model\figure\sim1.pdf')
 time=toc
