@@ -42,7 +42,7 @@ for i=1:4
     xlabel(['Fourier order'],'FontSize',12);
     if i==1
         ylabel(['mean absolute percentage error (MAPE) '],'FontSize',12);
-        legend(["MAPE_{train}","MAPE_{valid}"],'location','northeast','FontSize',10);
+        legend(["MAPE_{F}","MAPE_{V}"],'location','northeast','FontSize',10);
     end
     set(gca,'FontName','Book Antiqua','FontSize',12,'Box','on','Xlim',[-0.5,6.5],'XTick',[0:6])
 end

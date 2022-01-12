@@ -24,7 +24,7 @@ pos=[0.07,0.13,0.2,0.80; 0.31,0.13,0.2,0.80;0.55,0.13,0.2,0.80;0.79,0.13,0.2,0.8
 titles=["\sigma=0.10";"\sigma=0.20";"\sigma=0.30";"\sigma=0.40"];
 colors = [ 217, 83, 25, 160;0, 114, 189, 160]'/255;
 xlabs = {'0','1','2','3','4','5','6'};
-labels={'training', 'validation'};
+labels={'MAPE_{F}', 'MAPE_{V}'};
 %% begin loop
 for i=1:dev_length % error deviation
     x_sim_train=x_sim{i}(1:train,:);

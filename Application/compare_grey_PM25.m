@@ -53,9 +53,7 @@ for i=1:4 % four cities
     xtickformat('yyyy-MM')
     ylabel(['PM_{2.5} concentration (¦Ìg/m^3)'],'FontSize',12)
     set(gca,'FontName','Book Antiqua','FontSize',12,'YLim',ylim(i,:),'XLim',xlim);
-    if i==1 % legend
-        legend(len{i},'location','northeast','FontSize',10,'NumColumns',2);
-    end
+    legend(len{i},'location','northeast','FontSize',10,'NumColumns',2);
     xline(date(train),'--','HandleVisibility','off')
 end
 %% save figure

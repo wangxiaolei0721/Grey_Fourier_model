@@ -33,10 +33,10 @@ pos=[0.08,0.58,0.40,0.38; 0.57,0.58,0.40,0.38;0.08,0.08,0.40,0.38;0.57,0.08,0.40
 tit=["Shanghai";"Nangjing";"Hangzhou";"Hefei"];
 xlim=[dateshift(date(1),'start','month',-2),dateshift(date(end),'start','month',2)];
 ylim=[0,100;0,140;0,120;0,160];
-len={["Actual data","HR","SARIMA","NNAR","LSTM","GFM(1,1,N)"],...
-    ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,2)"],...
+len={["Actual data","HR","SARIMA","NNAR","LSTM","GFM(1,1,4)"],...
     ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,3)"],...
-    ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,2)"]};
+    ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,6)"],...
+    ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,6)"]};
 %% begin loop
 for i=1:4
     x=data(:,i);
@@ -68,9 +68,7 @@ for i=1:4
     xtickformat('yyyy-MM')
     ylabel(['PM_{2.5} concentration (¦Ìg/m^3)'],'FontSize',12)
     set(gca,'FontName','Book Antiqua','FontSize',12,'YLim',ylim(i,:),'XLim',xlim);
-    if i==1 % legend
-        legend(len{i},'location','northeast','FontSize',10,'NumColumns',2);
-    end
+    legend(len{i},'location','northeast','FontSize',10,'NumColumns',2);
     xline(date(train),'--','HandleVisibility','off')
 end
 %%
