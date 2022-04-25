@@ -29,9 +29,9 @@ for i=1:4 % four cities
     x_fit(:,i)=GFM_linear_integral(x(1:train),omega,FN(i),predict);
     % subplot i
     axes('position',pos(i,:),'Box','on');
-    plot(date,x,'Marker','o','MarkerSize',3,'LineWidth',1.5);
+    plot(date,x,'Color',[0, 113, 188,200]/255,'Marker','o','MarkerSize',5,'Linestyle',"none",'LineWidth',1.5);
     hold on
-    plot(date_predict,x_fit(:,i),'Marker','^','MarkerSize',3,'LineWidth',1.5)
+    plot(date_predict,x_fit(:,i),'Color',[216, 82, 24,200]/255,'Marker','.','MarkerSize',13,'Linestyle',"-.",'LineWidth',1.5)
     title(tit(i,:),'FontWeight','bold','FontSize',14);
     xlabel(['Month'],'FontSize',14);
     xtickformat('yyyy-MM')
@@ -39,7 +39,7 @@ for i=1:4 % four cities
     grid on
     set(gca,'FontName','Book Antiqua','FontSize',12,'YLim',ylim(i,:),'XLim',xlim);
     if i==1
-        legend(["Actual data","Predicting data"],'location','north','FontSize',12,'Orientation','horizontal');
+        legend(["Actual data","Predicted data"],'location','north','FontSize',12,'Orientation','horizontal');
     end
     xline(date(train),'--','HandleVisibility','off')
     text(date(train-21),train_position(i),"training",'FontSize',12,'FontName','Book Antiqua')

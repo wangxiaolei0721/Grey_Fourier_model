@@ -35,7 +35,7 @@ if length(xlab)~=ngs
 end
 
 box_width = 0.15;                % widths of the individual box
-outlier_size = 5;               % size of outliers in each plot
+outlier_size = 4;               % size of outliers in each plot
 
 %%
 
@@ -82,14 +82,19 @@ legend(fliplr(lgdtxt),'location',lcn,'Fontsize',11);
 hold on
 boxplot(bxv, bxg, 'positions',pos,'colors','k', ... 
     "Notch","on", "Widths",box_width, ...  % configuration of box body
-    "Symbol","r+", "OutlierSize",outlier_size)  % configuration of outliers 
+    "Symbol","w+", "OutlierSize",outlier_size)  % configuration of outliers 
+
+% change outliers color
+outlier_obj = findobj(gcf,'tag','Outliers');
+ for j = 1:numel(outlier_obj)
+    outlier_obj(j).MarkerEdgeColor = [0.3,0.3, 0.3];
+ end
+ 
 hold off
 
 % Set Xlabels
 aux = reshape(pos,nbs,[]);
 xlabpos = sum(aux,1)./nbs;
 set(gca, 'xtick',xlabpos, 'xticklabel',xlab);
-
-
 end
 

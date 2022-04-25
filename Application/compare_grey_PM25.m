@@ -31,7 +31,7 @@ for i=1:4 % four cities
     x_fit(:,1)=GMP11(x(1:train),test,PN(i)); % grey model with polynomial
     x_fit(:,2)=DGGM(x(1:train),omega,test);
     x_fit(:,3)=GM11_Gurcan(x(1:train),omega,test );
-    [x_fit(:,4),par]=GFM_linear_integral(x(1:train),omega,FN(i),test);
+    x_fit(:,4)=GFM_linear_integral(x(1:train),omega,FN(i),test);
     % mean absolute percetage error
     x_copy=repmat(x,1,4);
     ape=100*abs(x_fit-x_copy)./x_copy;

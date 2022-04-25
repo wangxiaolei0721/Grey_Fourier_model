@@ -34,9 +34,9 @@ for i=1:4
     % subplot i
     axes('position',pos(i,:));
     order=[0:order_max];
-    plot(order,mape_fit,'Marker','o','MarkerSize',7,'LineWidth',1.5);
+    plot(order,mape_fit,'Color',[0, 113, 188,200]/255,'Marker','o','MarkerSize',7,'Linestyle',"-.",'LineWidth',1.5);
     hold on
-    plot(order,mape_val,'Marker','^','MarkerSize',7,'LineWidth',1.5);
+    plot(order,mape_val,'Color',[216, 82, 24,200]/255,'Marker','^','MarkerSize',7,'Linestyle',"-.",'LineWidth',1.5);
     grid minor
     title(tit(i),'FontWeight','bold','FontSize',14);
     xlabel(['Fourier order'],'FontSize',12);

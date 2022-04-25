@@ -42,11 +42,10 @@ for i=1:dev_length  % error deviation
         text(-17,8,['time series'],'Rotation',90,'FontName','Book Antiqua','FontSize',14)
     end
     if i==1
-        legend(["interval of predicted data","average of predicted data ","actual data"],'FontSize',8,'Location','northwest')
+        legend(["Interval of predicted data","Average of predicted data ","Actual data"],'FontSize',8,'Location','northwest')
     end
     grid on
     xline(60,'--','HandleVisibility','off')
-    text(32,3.6,"training",'FontSize',12,'FontName','Book Antiqua')
     set(gca,'FontName','Book Antiqua','FontSize',12,'Box','on','XLim',[-2,75],'YLim',ylims(i,:))
 end
 %% annotation

@@ -33,10 +33,10 @@ pos=[0.08,0.58,0.40,0.38; 0.57,0.58,0.40,0.38;0.08,0.08,0.40,0.38;0.57,0.08,0.40
 tit=["Shanghai";"Nangjing";"Hangzhou";"Hefei"];
 xlim=[dateshift(date(1),'start','month',-2),dateshift(date(end),'start','month',2)];
 ylim=[0,100;0,140;0,120;0,160];
-len={["Actual data","HR","SARIMA","NNAR","LSTM","GFM(1,1,4)"],...
-    ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,3)"],...
-    ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,6)"],...
-    ["Real data","HR","SARIMA","NNAR","LSTM","GFM(1,1,6)"]};
+len={["Actual data","HW","SARIMA","NNAR","LSTM","GFM(1,1,4)"],...
+    ["Real data","HW","SARIMA","NNAR","LSTM","GFM(1,1,3)"],...
+    ["Real data","HW","SARIMA","NNAR","LSTM","GFM(1,1,6)"],...
+    ["Real data","HW","SARIMA","NNAR","LSTM","GFM(1,1,6)"]};
 %% begin loop
 for i=1:4
     x=data(:,i);
@@ -71,6 +71,5 @@ for i=1:4
     legend(len{i},'location','northeast','FontSize',10,'NumColumns',2);
     xline(date(train),'--','HandleVisibility','off')
 end
-%%
 %% save figure
 savefig(fig,'figure\exam_other.fig');
