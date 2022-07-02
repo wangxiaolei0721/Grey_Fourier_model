@@ -32,7 +32,7 @@ train<-l-test
 SH<-CSJ_PM25$SH
 SH_ts<-ts(data=SH, frequency = 12, start = c(2014, 12))
 SH_fit<-ts(SH[1:train], frequency = 12, start = c(2014, 12)) # 2014
-SH_test<-ts(SH[train+1:l], frequency = 12, start = c(2019, 12)) # 2019
+SH_test<-ts(SH[(train+1):l], frequency = 12, start = c(2019, 12)) # 2019
 
 
 
@@ -45,7 +45,7 @@ SH_arima_fore <- forecast(SH_arima, h = test)
 SH_APET<-abs(SH_arima_fore$mean-SH_test) / SH_test *100
 SH_MAPET<-mean(SH_APET)
 plot(SH_arima_fore)
-SH.fit<-c(SH_arima$fitted,SH_arima_fore$mean)
+SH_result<-c(SH_arima$fitted,SH_arima_fore$mean)
 
 
 
@@ -54,7 +54,7 @@ SH.fit<-c(SH_arima$fitted,SH_arima_fore$mean)
 NJ<-CSJ_PM25$NJ
 NJ_ts<-ts(NJ, frequency = 12, start = c(2014, 12))
 NJ_fit<-ts(NJ[1:train], frequency = 12, start = c(2014, 12)) # 2014
-NJ_test<-ts(NJ[train+1:l], frequency = 12, start = c(2019, 12)) # 2019
+NJ_test<-ts(NJ[(train+1):l], frequency = 12, start = c(2019, 12)) # 2019
 
 
 
@@ -67,7 +67,7 @@ NJ_arima_fore <- forecast(NJ_arima, h = test)
 NJ_APET<-abs(NJ_arima_fore$mean-NJ_test) / NJ_test *100
 NJ_MAPET<-mean(NJ_APET)
 autoplot(NJ_arima_fore)
-NJ.fit<-c(NJ_arima$fitted,NJ_arima_fore$mean)
+NJ_result<-c(NJ_arima$fitted,NJ_arima_fore$mean)
 
 
 
@@ -76,7 +76,7 @@ NJ.fit<-c(NJ_arima$fitted,NJ_arima_fore$mean)
 HZ<-CSJ_PM25$HZ
 HZ_ts<-ts(HZ, frequency = 12, start = c(2014, 12))
 HZ_fit<-ts(HZ[1:train], frequency = 12, start = c(2014, 12)) # 2014
-HZ_test<-ts(HZ[train+1:l], frequency = 12, start = c(2019, 12)) # 2019
+HZ_test<-ts(HZ[(train+1):l], frequency = 12, start = c(2019, 12)) # 2019
 
 
 # hangzhou SARIMA model
@@ -88,7 +88,7 @@ HZ_arima_fore <- forecast(HZ_arima, h = test)
 HZ_APET<-abs(HZ_arima_fore$mean-HZ_test) / HZ_test *100
 HZ_MAPET<-mean(HZ_APET)
 autoplot(HZ_arima_fore)
-HZ.fit<-c(HZ_arima$fitted,HZ_arima_fore$mean)
+HZ_result<-c(HZ_arima$fitted,HZ_arima_fore$mean)
 
 
 
@@ -97,7 +97,7 @@ HZ.fit<-c(HZ_arima$fitted,HZ_arima_fore$mean)
 HF<-CSJ_PM25$HF
 HF_ts<-ts(HF, frequency = 12, start = c(2014, 12))
 HF_fit<-ts(HF[1:train], frequency =12, start = c(2014, 12)) # Jan of 2015
-HF_test<-ts(HF[train+1:l], frequency = 12, start = c(2019, 12)) # Jan of 2020
+HF_test<-ts(HF[(train+1):l], frequency = 12, start = c(2019, 12)) # Jan of 2020
 
 
 # hefei SARIMA model
@@ -110,16 +110,15 @@ HF_arima_fore
 HF_APET<-abs(HF_arima_fore$mean-HF_test) / HF_test *100
 HF_MAPET<-mean(HF_APET)
 autoplot(HF_arima_fore)
-HF.fit<-c(HF_arima$fitted,HF_arima_fore$mean)
+HF_result<-c(HF_arima$fitted,HF_arima_fore$mean)
 
 
 
 # data export
-CSJ_ARIMA<-data.frame(SH.fit,NJ.fit,HZ.fit,HF.fit)
+CSJ_ARIMA<-data.frame(SH_result,NJ_result,HZ_result,HF_result)
 CSJ_ARIMA
 write.csv(CSJ_ARIMA,"../benchmark_other_model_data/PM25_ARIMA.csv")
 
 
 # return to current_path
 setwd(current_path) 
-

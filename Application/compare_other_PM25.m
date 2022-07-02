@@ -15,36 +15,36 @@ l=length(data);
 test=24; % test size
 train=l-test;  % training size
 %% read data from csv
-PM25_HW = readtable("benchmark_other_model_data\PM25_HW.csv",'VariableNamingRule','preserve'); 
-PM25_HW.Var1=[];
-PM25_HW = table2array(PM25_HW);
+PM25_es = readtable("benchmark_other_model_data\PM25_es.csv",'VariableNamingRule','preserve'); 
+PM25_es.Var1=[];
+PM25_es = table2array(PM25_es);
 PM25_ARIMA = readtable("benchmark_other_model_data\PM25_ARIMA.csv",'VariableNamingRule','preserve'); 
 PM25_ARIMA.Var1=[];
 PM25_ARIMA = table2array(PM25_ARIMA);
-PM25_Net = readtable("benchmark_other_model_data\PM25_Net.csv",'VariableNamingRule','preserve'); 
+PM25_Net = readtable("benchmark_other_model_data\PM25_net.csv",'VariableNamingRule','preserve'); 
 PM25_Net.Var1=[];
 PM25_Net = table2array(PM25_Net);
-PM25_LSTM = readtable("benchmark_other_model_data\PM25_LSTM.csv",'VariableNamingRule','preserve'); 
-PM25_LSTM.Var1=[];
-PM25_LSTM = table2array(PM25_LSTM);
+PM25_densenet = readtable("benchmark_other_model_data\PM25_densenet.csv",'VariableNamingRule','preserve'); 
+PM25_densenet.Var1=[];
+PM25_densenet = table2array(PM25_densenet);
 %% figure setting
 fig=figure('unit','centimeters','position',[10,5,30,20],'PaperPosition',[0, 0, 30,20],'PaperSize',[30,20]);
 pos=[0.08,0.58,0.40,0.38; 0.57,0.58,0.40,0.38;0.08,0.08,0.40,0.38;0.57,0.08,0.40,0.38 ];
 tit=["Shanghai";"Nangjing";"Hangzhou";"Hefei"];
 xlim=[dateshift(date(1),'start','month',-2),dateshift(date(end),'start','month',2)];
 ylim=[0,100;0,140;0,120;0,160];
-len={["Actual data","HW","SARIMA","NNAR","LSTM","GFM(1,1,4)"],...
-    ["Real data","HW","SARIMA","NNAR","LSTM","GFM(1,1,3)"],...
-    ["Real data","HW","SARIMA","NNAR","LSTM","GFM(1,1,6)"],...
-    ["Real data","HW","SARIMA","NNAR","LSTM","GFM(1,1,6)"]};
+len={["Actual data","HW","SARIMA","NNAR","DNN","GFM(1,1,4)"],...
+    ["Real data","HW","SARIMA","NNAR","DNN","GFM(1,1,3)"],...
+    ["Real data","HW","SARIMA","NNAR","DNN","GFM(1,1,6)"],...
+    ["Real data","HW","SARIMA","NNAR","DNN","GFM(1,1,6)"]};
 %% begin loop
 for i=1:4
     x=data(:,i);
     % x_fit(:,1)= Fourierfit(x(1:train),omega,test,FN(i)); % x is all data
-    x_fit(:,1)= PM25_HW(:,i);
+    x_fit(:,1)= PM25_es(:,i);
     x_fit(:,2)=PM25_ARIMA(:,i);
     x_fit(:,3)=PM25_Net(:,i);
-    x_fit(:,4)=PM25_LSTM(:,i);
+    x_fit(:,4)=PM25_densenet(:,i);
     x_fit(:,5)=GFM_linear_integral(x(1:60),omega,FN(i),test);
     % mean absolute percetage error
     x_copy=repmat(x,1,5);
