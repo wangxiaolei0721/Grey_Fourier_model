@@ -1,6 +1,8 @@
-## Matlab codes for paper, "A flexible grey seasonal model based on integral matching for forecasting monthly PM$_{2.5}$ time series", by Xiaolei Wang, Naiming Xie, Lu Yang
+## Matlab and R codes for paper
 
-## Code by Xiaolei Wang
+## Xiaolei Wang, Naiming Xie, Lu Yang. A flexible grey seasonal model based on integral matching for forecasting monthly PM$_{2.5}$ time series", Accepted by Chaos, Solitons & Fractals
+
+## Written by Xiaolei Wang
 
 ## College of Economics and Management, Nanjing University of Aeronautics and Astronautics, Nanjing 210016, China
 
