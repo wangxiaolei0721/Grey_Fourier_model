@@ -1,6 +1,6 @@
 ## Matlab and R codes for paper
 
-## Xiaolei Wang, Naiming Xie, Lu Yang. "A flexible grey Fourier model based on integral matching for forecasting seasonal PM2.5 time series[J]. Chaos, Solitons & Fractals, 2022, 162: 112417.
+## Xiaolei Wang, Naiming Xie, Lu Yang. A flexible grey Fourier model based on integral matching for forecasting seasonal PM2.5 time series[J]. Chaos, Solitons & Fractals, 2022, 162: 112417.
 
 ## Written by Xiaolei Wang
 
